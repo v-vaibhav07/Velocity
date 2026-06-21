@@ -8,12 +8,7 @@ const transporter=nodemailer.createTransport({
 })
 
 export const sendMail=async (to:string,subject:string,html:string)=>{
-// await transporter.sendMail({
-//     from:`"RYDEX" <${process.env.EMAIL}>`,
-//     to,
-//     subject,
-//     html
-// })
+
 await transporter.sendMail({
     from:`"RYDEX" <${process.env.EMAIL}>`,
     to,
