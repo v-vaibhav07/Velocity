@@ -43,6 +43,18 @@ export async function POST(req: NextRequest) {
         }
 
 
+        //        const hashedPassword = await bcrypt.hash(password, 10)
+        // if(user && !user.isEmailVerified){
+        // ail
+        //    user.otp=otp,
+        //    user.otpExpiresAt=otpExpiresAt
+        //    await user.save()
+        // }else{
+        //      user = await User.create({
+        //     name, email, password: hashedPassword,otp,otpExpiresAt
+        // })
+        // }
+
         await sendMail(
             email,
             "Your OTP for Email Verification",
