@@ -31,56 +31,17 @@ export async function GET(req: NextRequest) {
         const vehicleTypeMap = new Map(
             partnerVehicles.map((v) => [String(v.owner), v.type])
         )
-
         const pendingPartnersReviews = pendingPartnerUsers.map((p) => ({
             _id: p._id,
             name: p.name,
             email: p.email,
             vehicleType: vehicleTypeMap.get(String(p._id))
         }))
-
-
         const pendingVehicles=await Vehicle.find({
             status:"pending",
             baseFare:{$exists:true},
              pricePerKM:{$exists:true}
         }).populate("owner")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 
         return NextResponse.json({
             pendingVehicles,
@@ -94,7 +55,6 @@ export async function GET(req: NextRequest) {
         }, {
             status: 200
         })
-
     } catch (error) {
         return NextResponse.json({
             message: `admin dashboard error ${error}`
