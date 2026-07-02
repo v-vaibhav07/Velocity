@@ -4,35 +4,6 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 const geminiUrl=process.env.GEMINI_API_URL!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export async function POST(req:NextRequest) {
     try {
         await connectDb()
