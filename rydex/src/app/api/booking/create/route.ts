@@ -57,7 +57,6 @@ export async function POST(req: NextRequest) {
                 existing
             )
         }
-
         const booking = await Booking.create({
             user:  user._id,
             driver,
@@ -75,66 +74,6 @@ export async function POST(req: NextRequest) {
 
             bookingStatus: "requested"
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // const booking = await Booking.create({
-        //     user: 
-        //     driver,
-        //     vehicle: vehicleId,
-        //     pickUpAddress,
-        //     dropAddress,
-
-        //     pickUpLocation,
-        //     dropLocation,
-
-        //     fare,
-
-        //     userMobileNumber: mobileNumber,
-        //     driverMobileNumber: driver.mobileNumber,
-
-        //     bookingStatus: "requested"
-        // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         await axios.post(`${process.env.NEXT_PUBLIC_SOCKET_SERVER_URL}/emit`,{
            event:"new-booking",
            userId:driverId,
@@ -145,8 +84,6 @@ export async function POST(req: NextRequest) {
  return NextResponse.json(
                 booking,{status:200}
             )
-
-
     } catch (error) {
  return NextResponse.json(
                {message:`create booking error ${error}`},
