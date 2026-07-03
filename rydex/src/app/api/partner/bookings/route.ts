@@ -18,57 +18,7 @@ export async function GET(req:NextRequest) {
 
           const bookings=await Booking.find({driver:driver._id}).populate("user driver vehicle")
           .sort({createdAt:-1}) 
-          
-
-
-
-
-
-
-
-
-
-
-
-// export async function GET(req:NextRequest) {
-//     try {
-//         await connectDb()
-//          const session = await auth()
-//                 if (!session || !session.user?.email) {
-//                     return NextResponse.json({ message: "unauthorized" }
-//                         , { status: 400 }
-//                     )
-//                 }
-
-//                 const driver=await User.findOne({email:session.user.email})
-
-//           const bookings=await Booking.find({driver:driver._id}).populate("user driver vehicle")
-//           .sort({createdAt:-1}) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
+       
           return NextResponse.json(
             bookings,
             {status:200}
