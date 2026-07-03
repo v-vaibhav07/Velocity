@@ -18,33 +18,6 @@ export async function GET(
                 { status: 400 }
             )
         }
-
-
-
-
-
-
-//         export async function GET(
-//     req: NextRequest,
-//     context: { params: Promise<{ id: string }> }
-// ) {
-//     try {
-//         const id = (await context.params).id
-//         await connectDb()
-//         const booking = await Booking.findById(id)
-
-//         if (!booking || booking.bookingStatus !== "requested") {
-//             return NextResponse.json(
-//                 { message: "invalid" },
-//                 { status: 400 }
-//             )
-//         }
-
-
-
-
-
-
         booking.bookingStatus="rejected"
        
         await booking.save()
