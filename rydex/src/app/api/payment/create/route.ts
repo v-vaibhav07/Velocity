@@ -20,55 +20,6 @@ export async function POST(req:NextRequest) {
             currency:"INR",
             receipt:booking._id.toString()
         })
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export async function POST(req:NextRequest) {
-//     try {
-//         await connectDb()
-//         const {bookingId}=await req.json()
-//         const booking=await Booking.findById(bookingId)
-//         if(!booking){
-//             return NextResponse.json(
-//                 {message:"booking is not found."},
-//                 {status:400}
-//             )
-//         }
-
-//         const order=await razorpay.orders.create({
-//             amount:booking.fare*100,
-//             currency:"INR",
-//             receipt:booking._id.toString()
-//         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         booking.bookingStatus="awaiting_payment"
         await booking.save()

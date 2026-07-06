@@ -26,26 +26,6 @@ export async function POST(req: NextRequest) {
         booking.paymentStatus="paid"
         booking.bookingStatus = "confirmed"
         await booking.save()
-
-
-
-
-
-
-
-        //         const adminCommission=booking.fare*0.10
-        // const partnerAmount=booking.fare-adminCommission
-        // booking.adminCommission=adminCommission
-        // booking.partnerAmount=partnerAmount
-        // booking.paymentStatus="paid"
-        // booking.bookingStatus = "confirmed"
-        // await booking.save()
-
-
-
-
-
-
          return NextResponse.json(
                 { success: true, adminCommission,partnerAmount },
                 { status: 200 }
