@@ -43,6 +43,8 @@ export async function POST(req: NextRequest) {
             updated=true
           }
 
+
+          
           
           if(baseFare!==null){
             vehicle.baseFare=Number(baseFare)
