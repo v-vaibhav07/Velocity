@@ -40,50 +40,6 @@ export async function POST(req:NextRequest) {
         </div>
         `)
         }
-
-
-
-
-
-
-        //         if(booking.user.email){
-        //     await sendMail(booking.user.email,"Your Drop OTP - RYDEX", 
-        //         `
-        // <div style="font-family:sans-serif;padding:20px">
-        //   <h2>Ride OTP</h2>
-
-        //   <p>Your drop OTP is:</p>
-
-        //   <h1 style="letter-spacing:6px">${otp}</h1>
-
-        //   <p>This OTP is valid for 5 minutes.</p>
-
-        //   <p>Share this OTP with your driver to complete the ride.</p>
-
-        //   <br/>
-
-        //   <b>RYDEX</b>
-        // </div>
-        // `)
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return NextResponse.json(
             {message:"drop otp sent"},
             {status:200}
