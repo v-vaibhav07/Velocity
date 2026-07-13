@@ -69,26 +69,6 @@ function AuthModal({ open, onClose }: propType) {
         })
     }
 
-    // const handleChangeOtp=(index:number,value:string)=>{
-    //     if (!/^[0-9]?$/.test(value)) return
-    //     const updated=[...otp]
-    //     updated[index]=value
-    //     setOtp(updated)
-
-    //     if(value && index<otp.length-1){
-    //         document.getElementById(`otp-${index+1}`)?.focus()
-    //     }
-    //     if(!value && index>0){
-    //         document.getElementById(`otp-${index-1}`)?.focus()
-    //     }
-    // }
-
-
-
-
-
-
-
         const handleChangeOtp=(index:number,value:string)=>{
         if (!/^[0-9]?$/.test(value)) return
         const updated=[...otp]
@@ -102,17 +82,6 @@ function AuthModal({ open, onClose }: propType) {
             document.getElementById(`otp-${index-1}`)?.focus()
         }
     }
-
-
-
-
-
-
-
-
-
-
-
     return (
         <AnimatePresence>
             {open && (

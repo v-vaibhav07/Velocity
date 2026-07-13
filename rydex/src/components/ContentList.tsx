@@ -15,11 +15,6 @@ const handleStartVideoKyc=async (id:any)=>{
         console.log(error)
     }
 }
-
-
-
-
-
         if (data?.length === 0) {
         return (
             <motion.div

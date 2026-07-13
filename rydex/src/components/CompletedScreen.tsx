@@ -74,10 +74,6 @@ function CompletedScreen({ booking, role }: { booking:any, role: string }) {
             className="w-full border border-zinc-700 text-zinc-400 py-3.5 rounded-2xl text-sm font-semibold hover:bg-zinc-900 transition-colors">
     Back To Home
 </button>
-
-
-
-
                 </motion.div>
             </div>
         </motion.div>

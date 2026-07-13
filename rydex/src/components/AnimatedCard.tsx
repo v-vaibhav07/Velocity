@@ -16,5 +16,4 @@ function AnimatedCard({title,icon,children}:any) {
     </motion.div>
   )
 }
-
 export default AnimatedCard

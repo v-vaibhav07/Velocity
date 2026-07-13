@@ -25,21 +25,7 @@ function AdminEarning() {
     }, [])
 
 
-    // const total = earningData.reduce((a, d) => a + d.earnings, 0)
-    // const avg = earningData.length ? Math.round(total / earningData.length) : 0
-    // const max = earningData.length ? Math.max(...earningData.map((d) => d.earnings)) : 0
-    // const bestDay = earningData.find(d => d.earnings === max)
-    // const today = earningData[earningData.length - 1]
-    // const yesterDay = earningData[earningData.length - 2]
-    // const delta = today && yesterDay ? today.earnings - yesterDay.earnings : 0
-    // const deltaPositive = delta >= 0
-    // const deltaPct = yesterDay ? Math.abs(Math.round((delta / yesterDay.earnings) * 100)) : 0;
 
-
-
-
-
-    
     const total = earningData.reduce((a, d) => a + d.earnings, 0)
     const avg = earningData.length ? Math.round(total / earningData.length) : 0
     const max = earningData.length ? Math.max(...earningData.map((d) => d.earnings)) : 0
@@ -62,7 +48,7 @@ function AdminEarning() {
 
 
 
-    
+
 
     const fmt = (n: number) => {
         return "₹" + n.toLocaleString()
