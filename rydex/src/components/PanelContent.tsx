@@ -129,23 +129,6 @@ function PanelContent({ isActive, displayDistance, displayEta, cfg, status, book
                 )}
             </AnimatePresence>
 
-            {/* {booking?.vehicle && (
-                <div className='mx-5 lg:mx-6'>
-                    <div className='bg-zinc-50 border border-zinc-100 rounded-2xl p-4 flex items-center gap-3'>
-                        <div className='w-11 h-11 rounded-xl bg-zinc-900 flex items-center justify-center flex-shrink-0'>
-                            {getVehicleIcon(booking.vehicle.type)}
-                        </div>
-                        <div className='flex-1 min-w-0'>
-                            <p className='text-[10px] text-zinc-400 uppercase tracking-wider font-semibold'>Your Vehicle</p>
-                            <p className='text-sm font-bold text-zinc-900 truncate'>{booking.vehicle.vehicleModel ?? "vehicle"}</p>
-                        </div>
-                        <div className='flex-shrink-0 bg-zinc-900 px-3 py-1.5 rounded-lg'>
-                            <p className='text-white text-xs font-black tracking-widest font-mono'>{booking.vehicle.number ?? "number"}</p>
-                        </div>
-                    </div>
-                </div>
-            )} */}
-
                         {booking?.vehicle && (
                 <div className='mx-5 lg:mx-6'>
                     <div className='bg-zinc-50 border border-zinc-100 rounded-2xl p-4 flex items-center gap-3'>
