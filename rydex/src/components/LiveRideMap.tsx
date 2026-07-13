@@ -145,18 +145,6 @@ function LiveRideMap({ driverLocation, dropLocation, pickUpLocation, mapStatus,o
 
     }, [driverLocation,mapStatus])
 
-// const showPickMarker=mapStatus==="arriving"
-// const showPickUpRoute=mapStatus==="arriving" && routeToPickUp.length>0
-// const showDropRoute=mapStatus!="completed" && routeToDrop.length>0
-
-
-
-
-
-
-
-
-
 const showPickMarker=mapStatus==="arriving"
 const showPickUpRoute=mapStatus==="arriving" && routeToPickUp.length>0
 const showDropRoute=mapStatus!="completed" && routeToDrop.length>0

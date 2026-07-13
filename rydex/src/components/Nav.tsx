@@ -13,20 +13,6 @@ import { setUserData } from '@/redux/userSlice'
 import axios from 'axios'
 import { getSocket } from '@/lib/socket'
 
-// function Nav() {
-//     const pathName = usePathname()
-//     const [authOpen, setAuthOpen] = useState(false)
-//     const [profileOpen, setProfileOpen] = useState(false)
-//     const [menuOpen, setMenuOpen] = useState(false)
-//     const { userData } = useSelector((state: RootState) => state.user)
-//     const [pendingCount,setPendingCount]=useState(0)
-//     const dispatch = useDispatch<AppDispatch>()
-//     const router = useRouter()
-//     const handleLogOut = async () => {
-//         await signOut({ redirect: false })
-//         dispatch(setUserData(null))
-//         setProfileOpen(false)
-//     }
 function Nav() {
     const pathName = usePathname()
     const [authOpen, setAuthOpen] = useState(false)
