@@ -59,25 +59,69 @@ A multi-vehicle booking platform — Bike, Auto, Car, Loading, Truck — with re
 
 ## 🏗️ Architecture
 
-```
-Client (Next.js) ──HTTPS──▶ API (Express + JWT) ──▶ MongoDB Atlas
-       │                                              (users, bookings,
-       └──WebSocket──▶ Realtime Gateway (Socket.io)    vehicles, KYC)
-                              │
-                              ▼
-                    Matching / Geo Service
-                    (2dsphere nearby search)
+```mermaid
+flowchart TB
+    subgraph Client["🖥️ CLIENT — Next.js 14"]
+        C1["Customer App"]
+        C2["Partner App"]
+        C3["Admin Dashboard"]
+    end
+
+    subgraph API["⚙️ API LAYER — Express + JWT"]
+        A1["REST Controllers"]
+        A2["Role-Based Auth Guards"]
+    end
+
+    subgraph RT["🔴 REALTIME GATEWAY — Socket.io"]
+        R1["Live Location"]
+        R2["Live Booking Status"]
+        R3["Live Admin Queues"]
+    end
+
+    subgraph GEO["📍 MATCHING / GEO SERVICE"]
+        G1["2dsphere Nearby Search"]
+        G2["Route + ETA Engine"]
+    end
+
+    subgraph DB["🗄️ MongoDB Atlas"]
+        D1[("Users")]
+        D2[("Bookings")]
+        D3[("Vehicles")]
+        D4[("KYC Records")]
+    end
+
+    Client -- HTTPS --> API
+    Client == WebSocket ==> RT
+    API --> DB
+    API --> GEO
+    RT --> GEO
+    GEO --> DB
+
+    style Client fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#f8fafc
+    style API fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc
+    style RT fill:#3b0764,stroke:#e879f9,stroke-width:2px,color:#f8fafc
+    style GEO fill:#052e16,stroke:#4ade80,stroke-width:2px,color:#f8fafc
+    style DB fill:#422006,stroke:#facc15,stroke-width:2px,color:#f8fafc
 ```
 
-Durable state (bookings, KYC, earnings) → REST + MongoDB.
-Ephemeral state (live location, live status, live queue counts) → Socket.io.
+**Durable state** (bookings, KYC, earnings) → REST + MongoDB.
+**Ephemeral state** (live location, live status, live queue counts) → Socket.io.
+
+This split is the core design decision: nothing that's only true "right now" ever touches a database write.
 
 <br/>
 
 ## 🔒 Partner Verification
 
-```
-apply → video KYC → vehicle docs → admin approval → live
+```mermaid
+flowchart LR
+    A["📝 Apply"] --> B["🎥 Video KYC"] --> C["🚗 Vehicle Docs"] --> D["✅ Admin Approval"] --> E["🟢 Live"]
+
+    style A fill:#1e293b,stroke:#94a3b8,color:#f8fafc
+    style B fill:#1e293b,stroke:#94a3b8,color:#f8fafc
+    style C fill:#1e293b,stroke:#94a3b8,color:#f8fafc
+    style D fill:#1e293b,stroke:#94a3b8,color:#f8fafc
+    style E fill:#052e16,stroke:#4ade80,color:#f8fafc
 ```
 
 Three independent gates, not one boolean — identity, vehicle, and admin sign-off can each fail for different reasons.
