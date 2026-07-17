@@ -28,10 +28,16 @@ A multi-vehicle booking platform — Bike, Auto, Car, Loading, Truck — with re
 | Layer | Tech |
 |---|---|
 | Frontend | Next.js 14 · React 18 · Tailwind |
-| Backend | Node.js · Express · JWT |
-| Realtime | Socket.io |
+| Auth | NextAuth (Auth.js) · Google OAuth |
+| Realtime | Socket.io (standalone server) |
+| Video/Voice | ZegoCloud |
+| Maps & Geocoding | Geoapify |
+| Media Storage | Cloudinary |
+| Payments | Razorpay |
+| AI | Google Gemini API |
+| Email | Nodemailer (Gmail SMTP) |
 | Database | MongoDB Atlas (geospatial) |
-| Deploy | Vercel + persistent Node host |
+| Deploy | Vercel (web) + persistent Node host (Socket.io) |
 
 <br/>
 
@@ -195,19 +201,43 @@ cd apps/api && npm run dev      # :4000
 cd apps/web && npm run dev      # :3000
 ```
 
-**`apps/api/.env`**
+**`.env` (Next.js app)**
 ```env
-MONGODB_URI=mongodb+srv://...
-JWT_SECRET=...
-SOCKET_CORS_ORIGIN=http://localhost:3000
-MAPS_API_KEY=...
+MONGODB_URL="mongodb+srv://<user>:<password>@<cluster>.mongodb.net"
+AUTH_SECRET="<generate-with-openssl-rand-base64-32>"
+
+AUTH_GOOGLE_ID="<google-oauth-client-id>"
+AUTH_GOOGLE_SECRET="<google-oauth-client-secret>"
+
+EMAIL="<gmail-address>"
+PASS="<gmail-app-password>"
+
+CLOUDINARY_CLOUD_NAME="<cloudinary-cloud-name>"
+CLOUDINARY_API_KEY="<cloudinary-api-key>"
+CLOUDINARY_API_SECRET="<cloudinary-api-secret>"
+
+NEXT_PUBLIC_ZEGO_APP_ID="<zego-app-id>"
+NEXT_PUBLIC_ZEGO_SERVER_SECRET="<zego-server-secret>"
+
+NEXT_PUBLIC_SOCKET_SERVER_URL="http://localhost:8000"
+NEXT_PUBLIC_GEOAPIFY_API_KEY="<geoapify-api-key>"
+
+RAZORPAY_KEY_ID="<razorpay-key-id>"
+RAZORPAY_KEY_SECRET="<razorpay-key-secret>"
+NEXT_PUBLIC_RAZORPAY_KEY_ID="<razorpay-key-id>"
+
+GEMINI_API_URL="https://generativelanguage.googleapis.com/v1beta/models/<model>:generateContent?key=<gemini-api-key>"
+
+NEXT_BASE_URL="http://localhost:3000"
 ```
 
-**`apps/web/.env.local`**
+**`.env` (Socket.io server)**
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:4000
-NEXT_PUBLIC_SOCKET_URL=http://localhost:4000
+PORT=8000
+MONGODB_URL="mongodb+srv://<user>:<password>@<cluster>.mongodb.net"
 ```
+
+> ⚠️ **Never commit `.env` files.** Add them to `.gitignore` and use your host's secret manager (Vercel Environment Variables, etc.) in production. If any real credentials were ever pasted into a chat, ticket, or commit — rotate them immediately.
 
 <br/>
 
